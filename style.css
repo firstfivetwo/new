@@ -76,7 +76,7 @@ header {
 
 .hero_container {
   display: flex;
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 20px;
 }
 
@@ -100,14 +100,21 @@ header {
 }
 
 /* ===== СЛАЙДЕР ===== */
+
+.slide_all {
+  display: flex;
+  justify-content: center;
+}
+
 .slider-container {
-  width: 99%;
+  width: 350px;
   padding: 20px;
+  height: 100px;
 }
 
 .slider {
   background: rgba(255, 255, 255, 0.77);
-  border-radius: 50px;
+  border-radius: 65px;
   padding: 6px;
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -116,7 +123,7 @@ header {
 .slider-track {
   position: relative;
   width: 100%;
-  height: 60px;
+  height: 100px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 50px;
   overflow: hidden;
@@ -128,13 +135,14 @@ header {
 /* ОСНОВНОЙ ТЕКСТ - должен быть непрозрачным */
 .slider-text {
   position: absolute;
+  font-family: "Google Sans", sans-serif;
   top: 50%;
-  left: 50%;
+  left: 65%;
   transform: translate(-50%, -50%);
   color: #1a1a1a; /* ИЗМЕНЕНО: теперь непрозрачный черный */
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.001px;
   pointer-events: none;
   white-space: nowrap;
   transition: opacity 0.1s ease; /* Добавлено для плавности */
@@ -143,6 +151,7 @@ header {
 /* МАСКА - будет скрывать текст слева направо */
 .slider-text-mask {
   position: absolute;
+  border-radius: 20px;
   top: 0;
   left: 0;
   width: 0%; /* НАЧИНАЕТСЯ С 0% */
@@ -150,7 +159,7 @@ header {
   overflow: hidden;
   pointer-events: none;
   z-index: 1;
-  background: rgb(226, 226, 226); /* Прозрачный фон */
+  background: rgb(202, 225, 208); /* Прозрачный фон */
 }
 
 
@@ -160,8 +169,8 @@ header {
   left: 6px;
   top: 50%;
   transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
+  width: 90px;
+  height: 90px;
   background: #ff3b30;
   border-radius: 50%;
   display: flex;
@@ -180,8 +189,8 @@ header {
 }
 
 .slider-thumb svg {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   fill: white;
   pointer-events: none;
 }
@@ -202,4 +211,87 @@ header {
 
 .slider-thumb.dragging {
   animation: none;
+}
+
+.provedy {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 50px;
+  align-items: center;
+}
+
+.provedy p {
+  color: white;
+}
+
+.provedy_vpravo {
+  width: 35px;
+}
+
+.main_block {
+  background-color: #4d5aa7;
+  margin: 10px;
+  margin-top: 30px;
+  border-top-right-radius: 40px;
+  border-top-left-radius: 40px;
+}
+
+.main_text {
+  padding: 20px;
+}
+
+.main_text h3 {
+  color: white;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.main_text p {
+  color: rgb(246, 5, 5);
+  background-color: #e3e3e3fc;
+  font-weight: 600;
+  padding-block: 10px;
+  padding-left: 5px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.golos {
+  background-color: #2339B7;
+  padding: 20px;
+  border-top-right-radius: 40px;
+  border-top-left-radius: 40px;
+}
+
+.golos h4 {
+  text-align: center;
+  color: rgb(211, 218, 212);
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.opros {
+  background-color: #a0aae2;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+.opros p {
+  font-weight: 700;
+  font-size: 19px;
+  margin-bottom: 5px;
+}
+
+.opros_form {
+  display: flex;
+  flex-direction: column;
+  font-size: 19px;
+  justify-content: center;
+}
+
+input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
