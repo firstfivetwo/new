@@ -21,17 +21,14 @@
 
   <header>
     <div class="header_container">
-
       <img
         src="ЛОГО СИНИЙ.png"
         alt="Школьная демократия"
         class="logo"
       >
-
       <p class="header_text">
         ШКОЛЬНАЯ ДЕМОКРАТИЯ
       </p>
-
     </div>
   </header>
 
@@ -46,72 +43,77 @@
       </div>
     </div>
 
-  <div class="slide_all">
-    <div class="slider-container">
-    <div class="slider">
-      <div class="slider-track" id="sliderTrack">
-        <!-- ДОБАВЛЕН ID="sliderThumb" -->
-        <div class="slider-thumb" id="sliderThumb">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z" fill="white"/>
-          </svg>
-        </div>
-        <!-- ДОБАВЛЕН ID="sliderText" -->
-        <span class="slider-text" id="sliderText">Cдвинь чтобы войти</span>
-        <!-- ДОБАВЛЕН ТЕКСТ ВНУТРИ МАСКИ И ID -->
-        <div class="slider-text-mask" id="sliderTextMask">
-          <span class="slider-text" id="sliderTextMasked"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  <div class="provedy">
-    <img src="images/icons8-палец.svg" alt="" class="provedy_vpravo">
-    <p>проведи вправо</p>
-  </div>
-  <div class="main_block">
-    <div class="main_text">
-      <h3>Принимай участие в жизни школы с помощью пары кликов</h3>
-      <p>Все на анонимной платформе для школьников</p>
-    </div>
-    <div class="golos">
-      <h4>Голосуй!</h4>
-      <div class="opros">
-        <p>Песня на перемену завтра</p>
-        <div class="opros_form">
-          <label for="">
-            <input type="checkbox" name="" id="">
-            Let It Happen - Tame Impala
-          </label>
-          <label for="">
-            <input type="checkbox" name="" id="">
-            Само Собой - Артур Пирожков
-          </label>
-          <label for="">
-            <input type="checkbox" name="" id="">
-            Спокойная Ночь - Кино
-          </label>
+    <div class="slide_all">
+      <div class="slider-container">
+        <div class="slider">
+          <div class="slider-track" id="sliderTrack">
+            <div class="slider-thumb" id="sliderThumb">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z" fill="white"/>
+              </svg>
+            </div>
+            <span class="slider-text" id="sliderText">Cдвинь чтобы войти</span>
+            <div class="slider-text-mask" id="sliderTextMask">
+              <span class="slider-text" id="sliderTextMasked"></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="provedy">
+      <img src="icons8-палец.svg" alt="" class="provedy_vpravo">
+      <p>проведи вправо</p>
+    </div>
+
+    <!-- ===== ИСПРАВЛЕННЫЕ СЕКЦИИ ПОСЛЕ "проведи вправо" ===== -->
+    <div class="main_block">
+      
+      <div class="main_text">
+        <h3>Принимай участие в жизни школы с помощью пары кликов</h3>
+        <p>Все на анонимной платформе для школьников</p>
+      </div>
+      
+      <div class="golos">
+        <h4>Голосуй!</h4>
+        <div class="opros">
+          <p>Песня на перемену завтра</p>
+          <form class="opros_form" id="voteForm">
+            <label>
+              <input type="radio" name="song" value="tame-impala">
+              <span>Let It Happen - Tame Impala</span>
+            </label>
+            <label>
+              <input type="radio" name="song" value="artur-pirozhkov">
+              <span>Само Собой - Артур Пирожков</span>
+            </label>
+            <label>
+              <input type="radio" name="song" value="kino">
+              <span>Спокойная Ночь - Кино</span>
+            </label>
+          </form>
+        </div>
+      </div>
+      
       <div class="news">
         <h4>Будь в курсе свежих новостей школы</h4>
         <div class="text_news">
-          <p>Вчера прошли соревнования по воллейболу среди учеников школ района. Наша школа заняла...</p>
+          <p>Вчера прошли соревнования по воллейболу среди учеников школ района. Наша школа заняла первое место! Поздравляем команду! 🏆</p>
         </div>
       </div>
+      
       <div class="complaint">
-        <h4>Задавай ворпросы, предлагай и жалуйся анонимно</h4>
-        <form action="">
-          <label for="">Анонимное сообщение</label>
-          <textarea name="" id="message"></textarea>
-          <button type="submit">Отправить</button>
+        <h4>Задавай вопросы, предлагай и жалуйся анонимно</h4>
+        <form id="complaintForm">
+          <label for="message">Анонимное сообщение</label>
+          <textarea name="message" id="message" placeholder="Напишите ваше сообщение..."></textarea>
+          <button type="submit">Отправить анонимно</button>
         </form>
       </div>
+      
     </div>
-    <p>Бесплатно. В твоей школе</p>
-  </div>
+
+    <p class="footer_text">Бесплатно. В твоей школе</p>
 
   </main>
   <script src="script.js"></script>
