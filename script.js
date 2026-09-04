@@ -11,7 +11,7 @@ let thumbOffset = 0;
 let isCompleted = false;
 
 // URL для перехода
-const redirectUrl = '#'; // Замените на вашу ссылку
+const redirectUrl = '/auth'; // Замените на вашу ссылку
 
 const getMaxOffset = () => {
   const trackWidth = sliderTrack.offsetWidth;
@@ -159,3 +159,110 @@ window.addEventListener('resize', () => {
     updateThumbPosition(currentX);
   }
 });
+
+// Добавить в конец script.js
+
+// ===== ОБРАБОТКА ОПРОСА =====
+document.addEventListener('DOMContentLoaded', function() {
+  const voteForm = document.getElementById('voteForm');
+  
+  if (voteForm) {
+    const radioButtons = voteForm.querySelectorAll('input[type="radio"]');
+    
+    radioButtons.forEach(radio => {
+      radio.addEventListener('change', function() {
+        // Убираем выделение у всех
+        radioButtons.forEach(r => {
+          r.closest('label').style.background = 'rgba(255, 255, 255, 0.08)';
+        });
+        
+        // Подсвечиваем выбранный
+        if (this.checked) {
+          this.closest('label').style.background = 'rgba(76, 217, 100, 0.2)';
+          this.closest('label').style.border = '1px solid rgba(76, 217, 100, 0.3)';
+          
+          // Показываем уведомление
+          const selectedText = this.nextElementSibling.textContent;
+          showNotification(`Вы выбрали: ${selectedText}`);
+        }
+      });
+    });
+  }
+  
+  // ===== ОБРАБОТКА ЖАЛОБ =====
+  const complaintForm = document.getElementById('complaintForm');
+  
+  if (complaintForm) {
+    complaintForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const message = document.getElementById('message');
+      
+      if (message.value.trim().length < 5) {
+        showNotification('Пожалуйста, напишите сообщение (минимум 5 символов)', 'error');
+        return;
+      }
+      
+      showNotification('✅ Ваше сообщение отправлено анонимно!');
+      message.value = '';
+    });
+  }
+});
+
+// ===== ФУНКЦИЯ УВЕДОМЛЕНИЯ =====
+function showNotification(text, type = 'success') {
+  // Удаляем старое уведомление
+  const old = document.querySelector('.custom-notification');
+  if (old) old.remove();
+  
+  const notification = document.createElement('div');
+  notification.className = 'custom-notification';
+  notification.textContent = text;
+  
+  if (type === 'error') {
+    notification.style.background = '#ff3b30';
+  } else {
+    notification.style.background = '#4cd964';
+  }
+  
+  notification.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    border-radius: 15px;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    z-index: 9999;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    animation: slideUp 0.3s ease;
+    max-width: 90%;
+    text-align: center;
+  `;
+  
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.style.opacity = '0';
+    notification.style.transform = 'translateX(-50%) translateY(20px)';
+    notification.style.transition = 'all 0.3s ease';
+    setTimeout(() => notification.remove(), 300);
+  }, 3000);
+}
+
+// Добавляем CSS для уведомления
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+`;
+document.head.appendChild(style);
