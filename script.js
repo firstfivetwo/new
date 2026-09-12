@@ -11,7 +11,7 @@ let thumbOffset = 0;
 let isCompleted = false;
 
 // URL для перехода
-const redirectUrl = 'auth.html'; // Замените на вашу ссылку
+const redirectUrl = '/auth.html'; // Замените на вашу ссылку
 
 const getMaxOffset = () => {
   const trackWidth = sliderTrack.offsetWidth;
@@ -53,29 +53,31 @@ const updateThumbPosition = (x) => {
 
 const onSlideComplete = () => {
   isCompleted = true;
-  
-  // Полностью скрываем текст
-  sliderText.style.opacity = '100%';
+
+  // Сразу убираем состояние перетаскивания
+  isDragging = false;
+  sliderThumb.classList.remove('dragging');
+
+  // Возвращаем обычный курсор
+  sliderThumb.style.cursor = 'default';
+
+  sliderText.style.opacity = '1';
   sliderTextMask.style.width = '100%';
-  
-  // Делаем кнопку полностью зеленой
+
   sliderThumb.style.background = '#34c759';
   sliderThumb.style.boxShadow = '0 4px 20px rgba(52, 199, 89, 0.6)';
-  
-  // Меняем иконку на галочку
+
   sliderThumb.innerHTML = `
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M9 16.17L4.83 12L3.41 13.41L9 19L21 7L19.59 5.59L9 16.17Z" fill="white"/>
     </svg>
   `;
-  
-  // Останавливаем анимацию пульсации
+
   sliderThumb.style.animation = 'none';
-  
-  // Через 1 секунду переходим по ссылке
+
   setTimeout(() => {
     window.location.href = redirectUrl;
-  }, 1000);
+  }, 500);
 };
 
 const resetSlider = () => {
